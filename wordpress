@@ -1,0 +1,29 @@
+function ple_hook_javascript() {
+  ?>
+  <script>
+    jQuery(document).ready(function($) {
+      $("p, p span, .open-quote, p .open-quote, .custom-break h1, .custom-break h2, .custom-break h3, .custom-break h4, .custom-break h5, .custom-break h6, h1.custom-break, h4.custom-break").each(function() {
+         var wordArray = $(this).html().split(" ");
+         var finalTitle = "";
+         for (i=0;i<=wordArray.length-1;i++) {
+            finalTitle += wordArray[i];
+            if (i == (wordArray.length-2)) {
+                finalTitle += "&nbsp;";
+            } else { 
+                finalTitle += " ";
+            }
+          }
+          $(this).html(finalTitle);
+});    
+
+
+
+
+      });
+
+
+  </script>
+  <?php
+}
+
+add_action( 'wp_head', 'ple_hook_javascript' );
